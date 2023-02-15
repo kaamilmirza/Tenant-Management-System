@@ -13,9 +13,6 @@ import 'package:tenantmgmnt/themes/colors.dart';
 
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
-
-
 class SignInPage extends ConsumerStatefulWidget {
   const SignInPage({super.key});
 
@@ -33,7 +30,6 @@ class _SignInPageState extends ConsumerState<SignInPage> {
     final size = MediaQuery.of(context).size;
     return SafeArea(
         child: Scaffold(
-      
       resizeToAvoidBottomInset: false,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -53,12 +49,17 @@ class _SignInPageState extends ConsumerState<SignInPage> {
           SizedBox(
             height: size.height * 0.01,
           ),
-          SizedBox(
-            height: size.height * 0.1,
-            width: size.width * 0.9,
-            child: TextController(
-              hint: '999999999',
-              controller: phonecontrller,
+          Padding(
+            padding: EdgeInsets.only(
+              left: size.width * 0.05,
+            ),
+            child: SizedBox(
+              height: size.height * 0.1,
+              width: size.width * 0.9,
+              child: TextController(
+                hint: '999999999',
+                controller: phonecontrller,
+              ),
             ),
           ),
           // Padding(
@@ -96,9 +97,6 @@ class _SignInPageState extends ConsumerState<SignInPage> {
           //   ),
           // ),
           SizedBox(
-            height: size.height * 0.05,
-          ),
-          SizedBox(
             height: size.height * 0.02,
           ),
           Padding(
@@ -111,10 +109,11 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                     text: 'Verify',
                     onPressed: () {
                       print('Verify');
-                      ref.read(authControllerProvider.notifier).PhoneSignIn(context, phonecontrller.text);
+                      ref
+                          .read(authControllerProvider.notifier)
+                          .PhoneSignIn(context, phonecontrller.text);
                       // showSnackBar(context, 'Verify');
                       // Routemaster.of(context).push('/signupdata');
-
                     })),
           ),
           SizedBox(
